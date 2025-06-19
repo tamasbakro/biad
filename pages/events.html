@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Események - Imanuel Imaház</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <style>
+        .events-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .calendar-container {
+            background-color: var(--light-bg);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .event-list {
+            background-color: var(--light-bg);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .event-item {
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-date {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .event-title {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .event-description {
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .events-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero events-hero">
+        <div class="hero-content">
+            <h1>Események</h1>
+            <p>Fedezze fel közelgő eseményeinket, programjainkat és közösségi alkalmainkat!</p>
+        </div>
+    </div>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/logo.png" alt="Adventista Egyház Logó">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Főoldal</a></li>
+                <li><a href="events.html">Események</a></li>
+                <li><a href="bible.html">Biblia</a></li>
+                <li><a href="live.html">Élő Közvetítés</a></li>
+                <li><a href="gallery.html">Galéria</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Kapcsolat</a></li>
+                <li><a href="donate.html" class="donate-btn">Adományozás</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="events-section">
+            <div class="events-container">
+                <div class="calendar-container">
+                    <div id="calendar"></div>
+                </div>
+                <div class="event-list">
+                    <h3>Közelgő Események</h3>
+                    <div id="dynamic-events"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kapcsolat</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Cím: Str. Mihai Viteazu, Diosig, Bihor, Romania</p>
+                <p><i class="fas fa-phone"></i> Telefon: [Telefonszám]</p>
+                <p><i class="fas fa-envelope"></i> Email: [Email cím]</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kövessen minket</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Biserica Adventista Diosig. Minden jog fenntartva.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FullCalendar
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'hu',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [] // Események mostantól dinamikusan
+            });
+            calendar.render();
+
+            // Dinamikus események
+            function getNextDayOfWeek(date, dayOfWeek) {
+                const resultDate = new Date(date.getTime());
+                resultDate.setDate(date.getDate() + ((7 + dayOfWeek - date.getDay()) % 7 || 7));
+                return resultDate;
+            }
+            function formatDate(date) {
+                return date.toLocaleDateString('hu-HU', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            }
+            function pad(num) {
+                return num < 10 ? '0' + num : num;
+            }
+            const today = new Date();
+            const events = [
+                {
+                    title: "Istentisztelet",
+                    desc: "Szombati istentisztelet a közösséggel.",
+                    dayOfWeek: 6, // szombat
+                    time: "9:00"
+                },
+                {
+                    title: "Imaóra",
+                    desc: "Közös ima és tanulmányozás.",
+                    dayOfWeek: 2, // kedd
+                    time: "18:00"
+                },
+                {
+                    title: "Pénteki Istentisztelet",
+                    desc: "Pénteki istentisztelet a közösséggel.",
+                    dayOfWeek: 5, // péntek
+                    time: "19:00"
+                }
+            ];
+            const eventsDiv = document.getElementById('dynamic-events');
+            if (eventsDiv) {
+                eventsDiv.innerHTML = '';
+                events.forEach(ev => {
+                    const nextDate = getNextDayOfWeek(today, ev.dayOfWeek);
+                    const dateStr = `${nextDate.getFullYear()}. ${nextDate.toLocaleString('hu-HU', { month: 'long' })} ${pad(nextDate.getDate())}. - ${ev.time}`;
+                    eventsDiv.innerHTML += `
+                        <div class=\"event-item\">
+                            <div class=\"event-date\"><b>${dateStr}</b></div>
+                            <div class=\"event-title\"><b>${ev.title}</b></div>
+                            <div class=\"event-description\">${ev.desc}</div>
+                        </div>
+                    `;
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

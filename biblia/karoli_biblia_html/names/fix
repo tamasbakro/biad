@@ -1,0 +1,9 @@
+#!/bin/sh
+
+for i in [A-Z]*.html; do
+
+echo $i
+overwrite $i sed 's/<LI>/\
+<LI>/' $i
+
+done

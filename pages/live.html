@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Élő Közvetítés - Adventista Egyház</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .live-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .stream-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .stream-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .stream-info {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .stream-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .stream-description {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .stream-schedule {
+            margin-top: 2rem;
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-time {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .chat-container {
+            background-color: var(--light-bg);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .chat-input button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .chat-input button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .live-container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero live-hero">
+        <div class="hero-content">
+            <h1>Élő Közvetítés</h1>
+            <p>Kövessen minket élőben minden vasárnap és különleges alkalmakon!</p>
+        </div>
+    </div>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/logo.png" alt="Adventista Egyház Logó">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Főoldal</a></li>
+                <li><a href="events.html">Események</a></li>
+                <li><a href="bible.html">Biblia</a></li>
+                <li><a href="live.html">Élő Közvetítés</a></li>
+                <li><a href="gallery.html">Galéria</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Kapcsolat</a></li>
+                <li><a href="donate.html" class="donate-btn">Adományozás</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="live-section">
+            <div class="live-container">
+                <div class="stream-container">
+                    <!-- Replace with your YouTube channel's live stream embed URL -->
+                    <iframe
+                        src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="stream-info">
+                    <h3 class="stream-title">Szombati Istentisztelet</h3>
+                    <p class="stream-description">
+                        Köszöntjük az élő közvetítésen! Csatlakozzon hozzánk a szombati istentiszteletre.
+                        A közvetítés 9:00-kor kezdődik.
+                    </p>
+                </div>
+
+                <div class="stream-schedule">
+                    <h3>Következő Közvetítések</h3>
+                    <div class="schedule-item">
+                        <span class="schedule-event">Szombati Istentisztelet</span>
+                        <span class="schedule-time">Szombat 10:00</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-event">Imaóra</span>
+                        <span class="schedule-time">Szerda 18:00</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="schedule-event">Pénteki Istentisztelet</span>
+                        <span class="schedule-time">Péntek 18:00</span>
+                    </div>
+                </div>
+
+                <div class="chat-container">
+                    <h3>Élő Chat</h3>
+                    <div class="chat-messages">
+                        <!-- Chat messages will be dynamically loaded -->
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Írjon üzenetet...">
+                        <button>Küldés</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kapcsolat</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Cím: Str. Mihai Viteazu, Diosig, Bihor, Romania</p>
+                <p><i class="fas fa-phone"></i> Telefon: [Telefonszám]</p>
+                <p><i class="fas fa-envelope"></i> Email: [Email cím]</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kövessen minket</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Biserica Adventista Diosig. Minden jog fenntartva.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Add chat functionality
+        const chatInput = document.querySelector('.chat-input input');
+        const chatButton = document.querySelector('.chat-input button');
+        const chatMessages = document.querySelector('.chat-messages');
+
+        chatButton.addEventListener('click', function() {
+            const message = chatInput.value.trim();
+            if (message) {
+                const messageElement = document.createElement('div');
+                messageElement.textContent = message;
+                chatMessages.appendChild(messageElement);
+                chatInput.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                chatButton.click();
+            }
+        });
+    </script>
+</body>
+</html> 

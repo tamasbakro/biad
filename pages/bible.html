@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblia - Adventista Egyház</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .bible-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .bible-sidebar {
+            background-color: var(--light-bg);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .bible-content {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .search-box {
+            margin-bottom: 1rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .book-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .book-section {
+            margin: 1rem 0;
+        }
+
+        .book-section h4 {
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background-color: var(--light-bg);
+            border-radius: 5px;
+        }
+
+        .book-list li {
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 3px;
+            margin: 0.2rem 0;
+        }
+
+        .book-list li:hover {
+            background-color: var(--light-bg);
+        }
+
+        .book-list li.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .chapter-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .chapter-nav-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .chapter-nav-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .bible-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .bible-text h2 {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .bible-text h2 a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 0.2rem;
+        }
+
+        .bible-text h2 a:hover {
+            color: var(--primary-color);
+        }
+
+        .bible-text h2 .current-chapter {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .verses {
+            list-style-position: inside;
+            padding: 0;
+            margin: 0;
+        }
+
+        .verses li {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .verses li a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .verses li a[name] {
+            font-weight: 500;
+        }
+
+        .verses li a:not([name]) {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+
+        .verses li a:not([name]):hover {
+            text-decoration: underline;
+        }
+
+        .verse {
+            margin-bottom: 1rem;
+        }
+
+        .verse-number {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .search-results {
+            margin-top: 1rem;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .search-results p {
+            padding: 1rem;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .search-results ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .search-results li {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-results li:last-child {
+            border-bottom: none;
+        }
+
+        .search-results li:hover {
+            background-color: var(--light-bg);
+        }
+
+        .search-results li strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .bible-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero bible-hero">
+        <div class="hero-content">
+            <h1>Biblia</h1>
+            <p>Olvassa online a Bibliát, keressen fejezeteket, és fedezze fel Isten igéjét!</p>
+        </div>
+    </div>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/logo.png" alt="Adventista Egyház Logó">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Főoldal</a></li>
+                <li><a href="events.html">Események</a></li>
+                <li><a href="bible.html">Biblia</a></li>
+                <li><a href="live.html">Élő Közvetítés</a></li>
+                <li><a href="gallery.html">Galéria</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Kapcsolat</a></li>
+                <li><a href="donate.html" class="donate-btn">Adományozás</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="bible-section">
+            <div class="bible-container">
+                <div class="bible-sidebar">
+                    <div class="search-box">
+                        <input type="text" placeholder="Keresés a Bibliában...">
+                    </div>
+                    <ul class="book-list">
+                        <li class="active">1Mózes könyve</li>
+                        <li>2Mózes könyve</li>
+                        <li>3Mózes könyve</li>
+                        <li>4Mózes könyve</li>
+                        <li>5Mózes könyve</li>
+                        <!-- Add more books as needed -->
+                    </ul>
+                </div>
+                <div class="bible-content">
+                    <div class="chapter-navigation">
+                        <button class="chapter-nav-btn">Előző fejezet</button>
+                        <h3>MÓZES ELSŐ KÖNYVE A TEREMTÉSRŐL</h3>
+                        <button class="chapter-nav-btn">Következő fejezet</button>
+                    </div>
+                    <div class="bible-text">
+                        <h2>Fejezetek: <span class="current-chapter">1</span>, <a href="#">2</a>, <a href="#">3</a>, <a href="#">4</a>, <a href="#">5</a>, <a href="#">6</a>, <a href="#">7</a>, <a href="#">8</a>, <a href="#">9</a>, <a href="#">10</a>, <a href="#">11</a>, <a href="#">12</a>, <a href="#">13</a>, <a href="#">14</a>, <a href="#">15</a>, <a href="#">16</a>, <a href="#">17</a>, <a href="#">18</a>, <a href="#">19</a>, <a href="#">20</a>, <a href="#">21</a>, <a href="#">22</a>, <a href="#">23</a>, <a href="#">24</a>, <a href="#">25</a>, <a href="#">26</a>, <a href="#">27</a>, <a href="#">28</a>, <a href="#">29</a>, <a href="#">30</a>, <a href="#">31</a>, <a href="#">32</a>, <a href="#">33</a>, <a href="#">34</a>, <a href="#">35</a>, <a href="#">36</a>, <a href="#">37</a>, <a href="#">38</a>, <a href="#">39</a>, <a href="#">40</a>, <a href="#">41</a>, <a href="#">42</a>, <a href="#">43</a>, <a href="#">44</a>, <a href="#">45</a>, <a href="#">46</a>, <a href="#">47</a>, <a href="#">48</a>, <a href="#">49</a>, <a href="#">50</a>.</h2>
+
+                        <ol class="verses">
+                            <li><a name="para_1">Kezdetben teremté Isten az eget és a földet.</a><br>
+                            <a href="#">1 Móz. 2,4.</a>,
+                            <a href="#">1 Móz. 2,5.</a>,
+                            <a href="#">Zsolt. 33,6.</a>,
+                            <a href="#">Zsolt. 89,12.</a>,
+                            <a href="#">Zsolt. 136,5.</a>,
+                            <a href="#">Csel. 14,15.</a>,
+                            <a href="#">Csel. 17,24.</a>,
+                            <a href="#">Zsid. 11,3.</a>,
+                            <a href="#">Jób. 33,4.</a></li>
+
+                            <li><a name="para_2">A föld pedig kietlen és puszta vala, és setétség vala a mélység színén, és az Isten Lelke lebeg vala a vizek felett.</a></li>
+
+                            <li><a name="para_3">És monda Isten: Legyen világosság: és lőn világosság.</a><br>
+                            <a href="#">2 Kor. 4,6.</a></li>
+
+                            <li><a name="para_4">És látá Isten, hogy jó a világosság; és elválasztá Isten a világosságot a setétségtől.</a><br>
+                            <a href="#">Ésa. 45,7.</a></li>
+
+                            <li><a name="para_5">És nevezé Isten a világosságot nappalnak, és a setétséget nevezé éjszakának: és lőn este és lőn reggel, első nap.</a></li>
+
+                            <li><a name="para_6">És monda Isten: Legyen mennyezet a víz között, a mely elválassza a vizeket a vizektől.</a><br>
+                            <a href="#">Jer. 10,12.</a>,
+                            <a href="#">Jer. 51,15.</a></li>
+
+                            <li><a name="para_7">Teremté tehát Isten a mennyezetet, és elválasztá a mennyezet alatt való vizeket, a mennyezet felett való vizektől. És úgy lőn.</a><br>
+                            <a href="#">Zsolt. 148,4.</a></li>
+
+                            <li><a name="para_8">És nevezé Isten a mennyezetet égnek: és lőn este, és lőn reggel, második nap.</a></li>
+
+                            <li><a name="para_9">És monda Isten: Gyűljenek egybe az ég alatt való vizek egy helyre, hogy teszék meg a száraz. És úgy lőn.</a><br>
+                            <a href="#">Jób. 38,8.</a>,
+                            <a href="#">Zsolt. 33,6.</a>,
+                            <a href="#">Zsolt. 33,7.</a>,
+                            <a href="#">Zsolt. 33,9.</a>,
+                            <a href="#">Zsolt. 136,6.</a></li>
+
+                            <li><a name="para_10">És nevezé Isten a szárazat földnek; az egybegyűlt vizeket pedig tengernek nevezé. És látá Isten, hogy jó.</a><br>
+                            <a href="#">Zsolt. 95,5.</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kapcsolat</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Cím: Str. Mihai Viteazu, Diosig, Bihor, Romania</p>
+                <p><i class="fas fa-phone"></i> Telefon: [Telefonszám]</p>
+                <p><i class="fas fa-envelope"></i> Email: [Email cím]</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kövessen minket</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Biserica Adventista Diosig. Minden jog fenntartva.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                // Bible book data structure
+                const bibleBooks = {
+                    // Ószövetség
+                    '1Mózes könyve': { path: 'o/1-moz', chapters: 50 },
+                    '2Mózes könyve': { path: 'o/2-moz', chapters: 40 },
+                    '3Mózes könyve': { path: 'o/3-moz', chapters: 27 },
+                    '4Mózes könyve': { path: 'o/4-moz', chapters: 36 },
+                    '5Mózes könyve': { path: 'o/5-moz', chapters: 34 },
+                    'Józsué könyve': { path: 'o/jozs', chapters: 24 },
+                    'Bírák könyve': { path: 'o/bir', chapters: 21 },
+                    'Rút könyve': { path: 'o/ruth', chapters: 4 },
+                    '1Sámuel könyve': { path: 'o/1-sam', chapters: 31 },
+                    '2Sámuel könyve': { path: 'o/2-sam', chapters: 24 },
+                    '1Királyok könyve': { path: 'o/1-kir', chapters: 22 },
+                    '2Királyok könyve': { path: 'o/2-kir', chapters: 25 },
+                    '1Krónikák könyve': { path: 'o/1-kron', chapters: 29 },
+                    '2Krónikák könyve': { path: 'o/2-kron', chapters: 36 },
+                    'Ezsdrás könyve': { path: 'o/ezsdr', chapters: 10 },
+                    'Nehemiás könyve': { path: 'o/nehem', chapters: 13 },
+                    'Eszter könyve': { path: 'o/eszt', chapters: 10 },
+                    'Jób könyve': { path: 'o/job', chapters: 42 },
+                    'Zsoltárok könyve': { path: 'o/zsolt', chapters: 150 },
+                    'Példabeszédek könyve': { path: 'o/peld', chapters: 31 },
+                    'Prédikátor könyve': { path: 'o/pred', chapters: 12 },
+                    'Énekek éneke': { path: 'o/en', chapters: 8 },
+                    'Ézsaiás könyve': { path: 'o/esa', chapters: 66 },
+                    'Jeremiás könyve': { path: 'o/jer', chapters: 52 },
+                    'Jeremiás siralmai': { path: 'o/siral', chapters: 5 },
+                    'Ezékiel könyve': { path: 'o/ezek', chapters: 48 },
+                    'Dániel könyve': { path: 'o/dan', chapters: 12 },
+                    'Hóseás könyve': { path: 'o/hos', chapters: 14 },
+                    'Jóel könyve': { path: 'o/joel', chapters: 3 },
+                    'Ámósz könyve': { path: 'o/amos', chapters: 9 },
+                    'Abdiás könyve': { path: 'o/abd', chapters: 1 },
+                    'Jónás könyve': { path: 'o/jon', chapters: 4 },
+                    'Mikeás könyve': { path: 'o/mik', chapters: 7 },
+                    'Náhum könyve': { path: 'o/nah', chapters: 3 },
+                    'Habakuk könyve': { path: 'o/hab', chapters: 3 },
+                    'Zofóniás könyve': { path: 'o/sof', chapters: 3 },
+                    'Haggeus könyve': { path: 'o/agge', chapters: 2 },
+                    'Zakariás könyve': { path: 'o/zak', chapters: 14 },
+                    'Malakiás könyve': { path: 'o/malak', chapters: 4 },
+                    // Újszövetség
+                    'Máté evangéliuma': { path: 'uj/mat', chapters: 28 },
+                    'Márk evangéliuma': { path: 'uj/mark', chapters: 16 },
+                    'Lukács evangéliuma': { path: 'uj/luk', chapters: 24 },
+                    'János evangéliuma': { path: 'uj/jan', chapters: 21 },
+                    'Apostolok Cselekedetei': { path: 'uj/csel', chapters: 28 },
+                    'Rómaiakhoz írt levél': { path: 'uj/rom', chapters: 16 },
+                    '1Korinthusbeliekhez írt levél': { path: 'uj/1-kor', chapters: 16 },
+                    '2Korinthusbeliekhez írt levél': { path: 'uj/2-kor', chapters: 13 },
+                    'Galata beliekhez írt levél': { path: 'uj/gal', chapters: 6 },
+                    'Efezusbeliekhez írt levél': { path: 'uj/efez', chapters: 6 },
+                    'Filippibeliekhez írt levél': { path: 'uj/fil', chapters: 4 },
+                    'Kolossébeliekhez írt levél': { path: 'uj/kol', chapters: 4 },
+                    '1Thessalonikabeliekhez írt levél': { path: 'uj/1-thess', chapters: 5 },
+                    '2Thessalonikabeliekhez írt levél': { path: 'uj/2-thess', chapters: 3 },
+                    '1Timóteushoz írt levél': { path: 'uj/1-tim', chapters: 6 },
+                    '2Timóteushoz írt levél': { path: 'uj/2-tim', chapters: 4 },
+                    'Titushoz írt levél': { path: 'uj/tit', chapters: 3 },
+                    'Filemonhoz írt levél': { path: 'uj/filem', chapters: 1 },
+                    'Zsidókhoz írt levél': { path: 'uj/zsid', chapters: 13 },
+                    'Jakab levele': { path: 'uj/jak', chapters: 5 },
+                    '1Péter levele': { path: 'uj/1-pet', chapters: 5 },
+                    '2Péter levele': { path: 'uj/2-pet', chapters: 3 },
+                    '1János levele': { path: 'uj/1-jan', chapters: 5 },
+                    '2János levele': { path: 'uj/2-jan', chapters: 1 },
+                    '3János levele': { path: 'uj/3-jan', chapters: 1 },
+                    'Júdás levele': { path: 'uj/jud', chapters: 1 },
+                    'Jelenések könyve': { path: 'uj/jel', chapters: 22 }
+                };
+
+                // Global variables
+                let currentChapter = 1;
+                let currentBook = '1Mózes könyve';
+
+                // Populate book list with sections
+                const bookList = document.querySelector('.book-list');
+                if (!bookList) {
+                    throw new Error('Book list element not found');
+                }
+                bookList.innerHTML = ''; // Clear existing items
+
+                // Add Ószövetség section
+                const otSection = document.createElement('div');
+                otSection.className = 'book-section';
+                otSection.innerHTML = '<h4>Ószövetség</h4>';
+                bookList.appendChild(otSection);
+
+                // Add Ószövetség books
+                Object.entries(bibleBooks).forEach(([book, info]) => {
+                    if (info.path.startsWith('o/')) {
+                        const li = document.createElement('li');
+                        li.textContent = book;
+                        if (book === '1Mózes könyve') li.classList.add('active');
+                        li.addEventListener('click', () => selectBook(book));
+                        bookList.appendChild(li);
+                    }
+                });
+
+                // Add Újszövetség section
+                const ntSection = document.createElement('div');
+                ntSection.className = 'book-section';
+                ntSection.innerHTML = '<h4>Újszövetség</h4>';
+                bookList.appendChild(ntSection);
+
+                // Add Újszövetség books
+                Object.entries(bibleBooks).forEach(([book, info]) => {
+                    if (info.path.startsWith('uj/')) {
+                        const li = document.createElement('li');
+                        li.textContent = book;
+                        li.addEventListener('click', () => selectBook(book));
+                        bookList.appendChild(li);
+                    }
+                });
+
+                // Add Bible navigation functionality
+                function selectBook(bookName) {
+                    const activeBook = document.querySelector('.book-list li.active');
+                    if (activeBook) {
+                        activeBook.classList.remove('active');
+                    }
+                    
+                    const selectedBook = Array.from(document.querySelectorAll('.book-list li'))
+                        .find(li => li.textContent === bookName);
+                    
+                    if (selectedBook) {
+                        selectedBook.classList.add('active');
+                        document.querySelector('.bible-content h3').textContent = bookName;
+                        currentBook = bookName;
+                        currentChapter = 1;
+                        loadChapter(currentChapter);
+                    }
+                }
+
+                // Add search functionality
+                const searchInput = document.querySelector('.search-box input');
+                if (!searchInput) {
+                    throw new Error('Search input element not found');
+                }
+                let searchTimeout;
+
+                searchInput.addEventListener('input', function() {
+                    clearTimeout(searchTimeout);
+                    const searchTerm = this.value.toLowerCase().trim();
+                    
+                    if (searchTerm.length < 2) {
+                        clearSearchResults();
+                        return;
+                    }
+
+                    searchTimeout = setTimeout(() => {
+                        searchBible(searchTerm);
+                    }, 300);
+                });
+
+                function searchBible(term) {
+                    const results = [];
+                    const searchPromises = [];
+                    let completedSearches = 0;
+
+                    // Search through all books
+                    Object.entries(bibleBooks).forEach(([bookName, bookInfo]) => {
+                        for (let chapter = 1; chapter <= bookInfo.chapters; chapter++) {
+                            const url = `../biblia/karoli_biblia_html/${bookInfo.path}/chap${String(chapter).padStart(3, '0')}.html`;
+                            searchPromises.push(
+                                fetch(url)
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error(`HTTP error! status: ${response.status}`);
+                                        }
+                                        return response.text();
+                                    })
+                                    .then(html => {
+                                        const parser = new DOMParser();
+                                        const doc = parser.parseFromString(html, 'text/html');
+                                        const verses = doc.querySelectorAll('ol li');
+                                        
+                                        verses.forEach(verse => {
+                                            const verseText = verse.textContent.toLowerCase();
+                                            if (verseText.includes(term)) {
+                                                results.push({
+                                                    book: bookName,
+                                                    chapter: chapter,
+                                                    verse: verse.textContent,
+                                                    url: url
+                                                });
+                                            }
+                                        });
+                                    })
+                                    .catch(error => console.error('Error searching chapter:', error))
+                                    .finally(() => {
+                                        completedSearches++;
+                                        if (completedSearches === searchPromises.length) {
+                                            displaySearchResults(results);
+                                        }
+                                    })
+                            );
+                        }
+                    });
+                }
+
+                function displaySearchResults(results) {
+                    const resultsContainer = document.createElement('div');
+                    resultsContainer.className = 'search-results';
+                    
+                    if (results.length === 0) {
+                        resultsContainer.innerHTML = '<p>Nincs találat</p>';
+                    } else {
+                        const resultsList = document.createElement('ul');
+                        results.forEach(result => {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<strong>${result.book} ${result.chapter}. fejezet</strong>: ${result.verse}`;
+                            li.addEventListener('click', () => {
+                                selectBook(result.book);
+                                loadChapter(result.chapter);
+                            });
+                            resultsList.appendChild(li);
+                        });
+                        resultsContainer.appendChild(resultsList);
+                    }
+
+                    // Remove existing results if any
+                    const existingResults = document.querySelector('.search-results');
+                    if (existingResults) {
+                        existingResults.remove();
+                    }
+
+                    // Add new results
+                    document.querySelector('.bible-sidebar').appendChild(resultsContainer);
+                }
+
+                function clearSearchResults() {
+                    const existingResults = document.querySelector('.search-results');
+                    if (existingResults) {
+                        existingResults.remove();
+                    }
+                }
+
+                // Chapter navigation
+                const prevChapterBtn = document.querySelector('.chapter-nav-btn:first-child');
+                const nextChapterBtn = document.querySelector('.chapter-nav-btn:last-child');
+                
+                if (!prevChapterBtn || !nextChapterBtn) {
+                    throw new Error('Chapter navigation buttons not found');
+                }
+
+                prevChapterBtn.addEventListener('click', () => {
+                    if (currentChapter > 1) {
+                        currentChapter--;
+                        loadChapter(currentChapter);
+                    }
+                });
+
+                nextChapterBtn.addEventListener('click', () => {
+                    const maxChapters = bibleBooks[currentBook].chapters;
+                    if (currentChapter < maxChapters) {
+                        currentChapter++;
+                        loadChapter(currentChapter);
+                    }
+                });
+
+                // Update chapter links
+                function updateChapterLinks() {
+                    const maxChapters = bibleBooks[currentBook].chapters;
+                    const chapterLinks = document.querySelector('.bible-text h2');
+                    if (!chapterLinks) {
+                        throw new Error('Chapter links container not found');
+                    }
+                    
+                    chapterLinks.innerHTML = 'Fejezetek: ';
+                    
+                    for (let i = 1; i <= maxChapters; i++) {
+                        const link = document.createElement('a');
+                        link.href = '#';
+                        link.textContent = i;
+                        if (i === currentChapter) {
+                            link.classList.add('current-chapter');
+                        }
+                        link.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            currentChapter = i;
+                            loadChapter(i);
+                        });
+                        chapterLinks.appendChild(link);
+                        if (i < maxChapters) {
+                            chapterLinks.appendChild(document.createTextNode(', '));
+                        }
+                    }
+                }
+
+                function loadChapter(chapterNum) {
+                    currentChapter = chapterNum;
+                    const bookInfo = bibleBooks[currentBook];
+
+                    // Update current chapter display
+                    const chapterTitleEl = document.querySelector('.bible-content h3');
+                    if (chapterTitleEl) {
+                        chapterTitleEl.textContent = `${currentBook} - ${chapterNum}. fejezet`;
+                    }
+                    
+                    // Update chapter navigation buttons
+                    prevChapterBtn.disabled = chapterNum === 1;
+                    nextChapterBtn.disabled = chapterNum === bookInfo.chapters;
+
+                    // Update chapter links
+                    updateChapterLinks();
+
+                    // Load the chapter content
+                    const url = `../biblia/karoli_biblia_html/${bookInfo.path}/chap${String(chapterNum).padStart(3, '0')}.html`;
+                    
+                    fetch(url)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response.text();
+                        })
+                        .then(html => {
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(html, 'text/html');
+                            const verses = doc.querySelector('ol'); // Assuming verses are within an <ol> tag
+                            const versesContainer = document.querySelector('.verses');
+
+                            if (verses && versesContainer) {
+                                versesContainer.innerHTML = verses.innerHTML;
+                            } else if (versesContainer) {
+                                versesContainer.innerHTML = '<p>A fejezet szövege nem található.</p>';
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error loading chapter:', error);
+                            const versesContainer = document.querySelector('.verses');
+                            if (versesContainer) {
+                                versesContainer.innerHTML = '<p>Hiba történt a fejezet betöltése közben.</p>';
+                            }
+                        });
+                }
+
+                // Initialize with first chapter
+                loadChapter(1);
+
+            } catch (error) {
+                console.error('Error initializing Bible page:', error);
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,88 @@
+-- Create Bible tables
+CREATE TABLE BibleBooks (
+    BookID INT IDENTITY(1,1) PRIMARY KEY,
+    BookName NVARCHAR(50) NOT NULL,
+    BookOrder INT NOT NULL,
+    Testament NVARCHAR(10) NOT NULL,
+    ChapterCount INT NOT NULL
+);
+
+CREATE TABLE BibleVerses (
+    VerseID INT IDENTITY(1,1) PRIMARY KEY,
+    BookID INT FOREIGN KEY REFERENCES BibleBooks(BookID),
+    Chapter INT NOT NULL,
+    Verse INT NOT NULL,
+    VerseText NVARCHAR(MAX) NOT NULL
+);
+
+-- Insert Old Testament books
+INSERT INTO BibleBooks (BookName, BookOrder, Testament, ChapterCount) VALUES
+('1. Mózes', 1, 'Old', 50),
+('2. Mózes', 2, 'Old', 40),
+('3. Mózes', 3, 'Old', 27),
+('4. Mózes', 4, 'Old', 36),
+('5. Mózes', 5, 'Old', 34),
+('Józsué', 6, 'Old', 24),
+('Bírák', 7, 'Old', 21),
+('Ruth', 8, 'Old', 4),
+('1. Sámuel', 9, 'Old', 31),
+('2. Sámuel', 10, 'Old', 24),
+('1. Királyok', 11, 'Old', 22),
+('2. Királyok', 12, 'Old', 25),
+('1. Krónikák', 13, 'Old', 29),
+('2. Krónikák', 14, 'Old', 36),
+('Ezsdrás', 15, 'Old', 10),
+('Nehémiás', 16, 'Old', 13),
+('Eszter', 17, 'Old', 10),
+('Jób', 18, 'Old', 42),
+('Zsoltárok', 19, 'Old', 150),
+('Példabeszédek', 20, 'Old', 31),
+('Prédikátor', 21, 'Old', 12),
+('Énekek éneke', 22, 'Old', 8),
+('Ézsaiás', 23, 'Old', 66),
+('Jeremiás', 24, 'Old', 52),
+('Jeremiás Siralmai', 25, 'Old', 5),
+('Ezékiel', 26, 'Old', 48),
+('Dániel', 27, 'Old', 12),
+('Hóseás', 28, 'Old', 14),
+('Jóel', 29, 'Old', 3),
+('Ámós', 30, 'Old', 9),
+('Abdiás', 31, 'Old', 1),
+('Jónás', 32, 'Old', 4),
+('Mikeás', 33, 'Old', 7),
+('Náhum', 34, 'Old', 3),
+('Habakuk', 35, 'Old', 3),
+('Sofóniás', 36, 'Old', 3),
+('Aggeus', 37, 'Old', 2),
+('Zakariás', 38, 'Old', 14),
+('Malakiás', 39, 'Old', 4);
+
+-- Insert New Testament books
+INSERT INTO BibleBooks (BookName, BookOrder, Testament, ChapterCount) VALUES
+('Máté', 40, 'New', 28),
+('Márk', 41, 'New', 16),
+('Lukács', 42, 'New', 24),
+('János', 43, 'New', 21),
+('Apostolok Cselekedetei', 44, 'New', 28),
+('Róma', 45, 'New', 16),
+('1. Korintus', 46, 'New', 16),
+('2. Korintus', 47, 'New', 13),
+('Galata', 48, 'New', 6),
+('Efézus', 49, 'New', 6),
+('Filippi', 50, 'New', 4),
+('Kolossé', 51, 'New', 4),
+('1. Thessalonika', 52, 'New', 5),
+('2. Thessalonika', 53, 'New', 3),
+('1. Timóteus', 54, 'New', 6),
+('2. Timóteus', 55, 'New', 4),
+('Titusz', 56, 'New', 3),
+('Filemon', 57, 'New', 1),
+('Zsidókhoz írt levél', 58, 'New', 13),
+('Jakab', 59, 'New', 5),
+('1. Péter', 60, 'New', 5),
+('2. Péter', 61, 'New', 3),
+('1. János', 62, 'New', 5),
+('2. János', 63, 'New', 1),
+('3. János', 64, 'New', 1),
+('Júdás', 65, 'New', 1),
+('Jelenések', 66, 'New', 22); 

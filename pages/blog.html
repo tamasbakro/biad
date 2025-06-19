@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Adventista Egyház</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .blog-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--light-bg);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .blog-excerpt {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .blog-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero blog-hero">
+        <div class="hero-content">
+            <h1>Blog</h1>
+            <p>Olvassa el legfrissebb híreinket, lelki gondolatainkat és közösségi beszámolóinkat!</p>
+        </div>
+    </div>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/logo.png" alt="Adventista Egyház Logó">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Főoldal</a></li>
+                <li><a href="events.html">Események</a></li>
+                <li><a href="bible.html">Biblia</a></li>
+                <li><a href="live.html">Élő Közvetítés</a></li>
+                <li><a href="gallery.html">Galéria</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Kapcsolat</a></li>
+                <li><a href="donate.html" class="donate-btn">Adományozás</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-section">
+            <div class="blog-container">
+                <div class="blog-filters">
+                    <button class="filter-btn active" data-filter="all">Mind</button>
+                    <button class="filter-btn" data-filter="spiritual">Lelki</button>
+                    <button class="filter-btn" data-filter="community">Közösségi</button>
+                    <button class="filter-btn" data-filter="events">Események</button>
+                </div>
+
+                <div class="blog-grid">
+                    <!-- Example blog posts - replace with actual content -->
+                    <article class="blog-card" data-category="spiritual">
+                        <img src="../images/blog/spiritual1.jpg" alt="Lelki cikk" class="blog-image">
+                        <div class="blog-content">
+                            <div class="blog-date">2024. június 15.</div>
+                            <h3 class="blog-title">Az ima ereje a mindennapokban</h3>
+                            <p class="blog-excerpt">
+                                Az ima nem csupán egy vallási gyakorlat, hanem egy mély, személyes kapcsolat az Istennel.
+                                Fedezze fel az ima erejét és hatását a mindennapi életünkre.
+                            </p>
+                            <div class="blog-meta">
+                                <div class="blog-author">
+                                    <img src="../images/authors/pastor1.jpg" alt="Szerző" class="author-avatar">
+                                    <span>Nagy János</span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Lelki</span>
+                                    <span class="blog-tag">Ima</span>
+                                </div>
+                            </div>
+                            <a href="#" class="read-more">Tovább olvasom &rarr;</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-category="community">
+                        <img src="../images/blog/community1.jpg" alt="Közösségi cikk" class="blog-image">
+                        <div class="blog-content">
+                            <div class="blog-date">2024. június 12.</div>
+                            <h3 class="blog-title">A közösség ereje</h3>
+                            <p class="blog-excerpt">
+                                A közösségben való részvétel nem csupán egy találkozás, hanem egy erős kapocs,
+                                ami összeköti a hívőket és erőt ad mindannyiunknak.
+                            </p>
+                            <div class="blog-meta">
+                                <div class="blog-author">
+                                    <img src="../images/authors/pastor2.jpg" alt="Szerző" class="author-avatar">
+                                    <span>Kovács Mária</span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Közösség</span>
+                                    <span class="blog-tag">Egyház</span>
+                                </div>
+                            </div>
+                            <a href="#" class="read-more">Tovább olvasom &rarr;</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-category="events">
+                        <img src="../images/blog/event1.jpg" alt="Esemény cikk" class="blog-image">
+                        <div class="blog-content">
+                            <div class="blog-date">2024. június 10.</div>
+                            <h3 class="blog-title">Sikeres ifjúsági találkozó</h3>
+                            <p class="blog-excerpt">
+                                Az elmúlt hétvégén megtartott ifjúsági találkozó nagy sikerrel zárult.
+                                Több mint száz fiatal vett részt a programokon és a közös imákon.
+                            </p>
+                            <div class="blog-meta">
+                                <div class="blog-author">
+                                    <img src="../images/authors/youth1.jpg" alt="Szerző" class="author-avatar">
+                                    <span>Szabó Péter</span>
+                                </div>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Esemény</span>
+                                    <span class="blog-tag">Ifjúság</span>
+                                </div>
+                            </div>
+                            <a href="#" class="read-more">Tovább olvasom &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kapcsolat</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Cím: Str. Mihai Viteazu, Diosig, Bihor, Romania</p>
+                <p><i class="fas fa-phone"></i> Telefon: [Telefonszám]</p>
+                <p><i class="fas fa-envelope"></i> Email: [Email cím]</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kövessen minket</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Biserica Adventista Diosig. Minden jog fenntartva.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Blog filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                blogCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,83 @@
+<html>
+<HEAD>
+<TITLE>Keres&eacute;s a Bibli&aacute;ban</TITLE>
+</HEAD>
+
+<BODY>
+
+<H1>Keres&eacute;s a Bibli&aacute;ban</H1>
+
+<FORM METHOD="POST" ACTION="/biblia/search.cgi">
+
+<OL><LI>Add meg a keresend&otilde; sz&ouml;veget: <INPUT NAME="what"
+TYPE="TEXT" VALUE="" SIZE="40">
+
+<LI>&Aacute;ll&iacute;tsd be a keres&eacute;s m&oacute;dj&aacute;t:
+
+<dl><dt><INPUT TYPE="CHECKBOX" NAME="ignore" CHECKED VALUE="on"> Kis-
+&eacute;s nagybet&ucirc;k azonosak.
+
+<dd>Ha ezt a gombot benyomod, akkor a keres&otilde; program nem tesz
+k&uuml;l&ouml;nbs&eacute;get a kis- &eacute;s a nagybet&ucirc;k
+k&ouml;z&ouml;tt!
+
+<dt><input type="CHECKBOX" name="noaccent" checked value="on">
+&Eacute;kezetes &eacute;s &eacute;kezet n&eacute;lk&uuml;li
+bet&ucirc;k azonosak.
+
+<dd>Ha ezt a gombot benyomod, akkor az &eacute;kezetes bet&ucirc;ket
+&eacute;kezet n&eacute;lk&uuml;l is be&iacute;rhatod, vagyis
+p&eacute;ld&aacute;ul az <b>o</b> bet&ucirc; egyezni fog az <b>o</b>,
+<b>&oacute;</b>, <b>&ouml;</b>, <b>&otilde;</b>, <b>&ocirc;</b>
+bet&ucirc;kkel, s&otilde;t, ha az el&otilde;z&otilde; gombot is
+benyomtad, akkor m&eacute;g az <b>O</b>, <b>&Oacute;</b>,
+<b>&Ouml;</b>, <b>&Otilde;</b>, <b>&Ocirc;</b> bet&ucirc;kkel is!
+
+<dt><input type="checkbox" name="name" value="on"> Név keresése
+
+<dd>Ezt a gombot akkor célszerû benyomni, ha egy nevet keresel. Ekkor
+a keresõ program a magánhangzóra végzõdõ név esetleges ragozott formáit
+is meg fogja találni.
+
+</dl>
+
+<li>Add meg a keresés helyét:
+
+<br><input type="radio" name="where" value="o"> Károli Ószövetség
+
+<br><input type="radio" name="where" value="uj"> Károli Újszövetség
+
+<br><input type="radio" name="where" value="o-uj" checked> Teljes Károli
+
+<br><input type="radio" name="where" value="bd"> Békés/Dalos Újszövetség
+
+
+<LI><INPUT TYPE="SUBMIT" VALUE="Hajr&aacute;!"></OL>
+
+<P>&Eacute;kezetes bet&ucirc;k megad&aacute;s&aacute;ra a
+k&ouml;vetkez&otilde; m&oacute;dszert haszn&aacute;lhatod:
+
+<UL><LI>&aacute;= a' &Aacute;= A' stb.
+
+<LI>&ouml;= o: &Ouml;= O: stb.
+
+<LI>&otilde;= o" &Otilde;= O" stb.</UL>
+
+<p>P&eacute;ld&aacute;ul ha a keresett sz&ouml;veg
+<B>M&oacute;zes</B>, akkor azt &iacute;gy &iacute;rd be:
+<B>Mo'zes</B>, ha a keres&eacute;si m&oacute;dokn&aacute;l az
+els&otilde; gombot benyomtad, akkor &iacute;gy is be&iacute;rhatod:
+<b>mo'zes</b>, ha pedig a m&aacute;sodik gombot is benyomtad, akkor
+&iacute;gy is: <b>mozes</b>.
+
+<p>Ha a sz&aacute;m&iacute;t&oacute;g&eacute;ped alkalmas arra, hogy Latin-1, vagy Latin-2 k&oacute;dol&aacute;s
+szerinti bet&ucirc;ket &iacute;rj be, akkor az &eacute;kezetes bet&ucirc;ket k&ouml;zvetlen&uuml;l is
+be&iacute;rhatod, mindenf&eacute;le tr&uuml;kk&ouml;k n&eacute;lk&uuml;l is, teh&aacute;t, &iacute;rhatod azt, hogy
+<b>M&oacute;zes</b>.
+
+</FORM>
+
+<HR>
+
+</BODY>
+</html>
