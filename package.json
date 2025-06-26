@@ -1,8 +1,25 @@
 {
   "dependencies": {
-    "firebase": "^11.9.1"
+    "express": "^5.1.0",
+    "firebase": "^11.9.1",
+    "socket.io": "^4.8.1"
   },
   "scripts": {
     "start": "node src/index.js"
-  }
+  },
+  "name": "biad",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamasbakro/biad.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamasbakro/biad/issues"
+  },
+  "homepage": "https://github.com/tamasbakro/biad#readme",
+  "description": ""
 }

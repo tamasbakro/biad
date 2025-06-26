@@ -7,6 +7,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5183890456253667" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
     <style>
         .live-container {
             max-width: 1200px;
@@ -232,7 +233,8 @@
     <script src="../js/main.js"></script>
     <script src="../js/language.js"></script>
     <script>
-        // Add chat functionality
+        const socket = io('http://localhost:3000'); // vagy a szervered IP-je
+
         const chatInput = document.querySelector('.chat-input input');
         const chatButton = document.querySelector('.chat-input button');
         const chatMessages = document.querySelector('.chat-messages');
@@ -240,11 +242,8 @@
         chatButton.addEventListener('click', function() {
             const message = chatInput.value.trim();
             if (message) {
-                const messageElement = document.createElement('div');
-                messageElement.textContent = message;
-                chatMessages.appendChild(messageElement);
+                socket.emit('chat message', message);
                 chatInput.value = '';
-                chatMessages.scrollTop = chatMessages.scrollHeight;
             }
         });
 
@@ -252,6 +251,13 @@
             if (e.key === 'Enter') {
                 chatButton.click();
             }
+        });
+
+        socket.on('chat message', function(msg) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = msg;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         });
     </script>
 </body>
