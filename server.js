@@ -12,7 +12,7 @@ const io = socketIo(server, {
 });
 
 // Statikus fájlok kiszolgálása a 'public' mappából
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 io.on('connection', (socket) => {
     console.log('Felhasználó csatlakozott');
