@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    fetchSunsetTime();
 });
 
 // Hungarian favorite verses
@@ -227,4 +229,32 @@ function loadVerseOfTheDay(lang) {
     // fallback: clear
     verseTextEl.textContent = '';
     verseRefEl.textContent = '';
+}
+
+// Naplemente időpont lekérése és kiírása
+function fetchSunsetTime() {
+    // Diosig, Romania koordinátái
+    const lat = 47.2822;
+    const lon = 21.5722;
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    const dateStr = `${yyyy}-${mm}-${dd}`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=sunset&timezone=Europe%2FBucharest&start_date=${dateStr}&end_date=${dateStr}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            const sunset = data.daily && data.daily.sunset && data.daily.sunset[0];
+            if (sunset) {
+                // sunset: "2024-06-19T21:18"
+                const time = sunset.split('T')[1];
+                document.getElementById('sunset-time').textContent = time;
+            } else {
+                document.getElementById('sunset-time').textContent = '--:--';
+            }
+        })
+        .catch(() => {
+            document.getElementById('sunset-time').textContent = '--:--';
+        });
 } 

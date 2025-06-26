@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A BIserica Adventista Diosig">
+    <meta name="description" content="A Biserica Adventista Diosig">
     <title>Biserica Adventista Diosig</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5183890456253667" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    .sunset-anim {
+      animation: floatSun 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes floatSun {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(8px); }
+    }
+    </style>
 </head>
 <body>
     <div class="hero">
@@ -15,6 +24,10 @@
             <h1 data-translate-key="hero_title_index">Üdvözöljük a Diószegi Adventista Gyülekezet oldalán!</h1>
             <p id="daily-quote-text" style="text-align:center; margin-bottom:0; max-width: 600px; margin-left:auto; margin-right:auto; word-break:break-word;">&bdquo;<span id="daily-quote-content">Mert úgy szerette Isten e világot, hogy az ő egyszülött Fiát adta, hogy valaki hiszen ő benne, el ne vesszen, hanem örök élete legyen.</span>&rdquo;</p>
             <div id="daily-quote-ref" style="text-align:right; font-style:italic; margin-top:0.2em; padding-right:10px; max-width:600px; margin-left:auto; margin-right:auto;">János 3:16</div>
+            <div id="sunset-row" style="display:flex; align-items:center; justify-content:center; gap:0.5em; background:rgba(255,200,100,0.13); border-radius:18px; margin-top:0.7em; max-width:600px; margin-left:auto; margin-right:auto; color:#555; font-size:1.1em; padding:0.4em 1em 0.4em 0.9em;">
+                <i class="fas fa-cloud-sun sunset-anim" style="color:#f7b733; font-size:1.3em;"></i>
+                <span>Naplemente ma:</span> <span id="sunset-time">--:--</span>
+            </div>
         </div>
     </div>
     <header>
@@ -28,12 +41,14 @@
                 <li><a href="index.html" data-translate-key="nav_home">Főoldal</a></li>
                 <li><a href="pages/events.html" data-translate-key="nav_events">Események</a></li>
                 <li><a href="pages/bible.html" data-translate-key="nav_bible">Biblia</a></li>
-                <li><a href="pages/live.html" data-translate-key="nav_live">Élő Közvetítés</a></li>
+                <li><a href="pages/live.html" data-translate-key="nav_live">Élő</a></li>
+                <li><a href="https://www.ellenwhite.pro/" target="_blank" rel="noopener" data-translate-key="nav_egw">Ellen G. White</a></li>
                 <li><a href="pages/gallery.html" data-translate-key="nav_gallery">Galéria</a></li>
                 <li><a href="pages/gyerekek.html" data-translate-key="nav_gyerekek">Gyerekeknek</a></li>
                 <li><a href="pages/blog.html" data-translate-key="nav_blog">Blog</a></li>
                 <li><a href="pages/contact.html" data-translate-key="nav_contact">Kapcsolat</a></li>
                 <li><a href="pages/donate.html" class="donate-btn" data-translate-key="nav_donate">Adományozás</a></li>
+                
             </ul>
             <div class="hamburger">
                 <span></span>
