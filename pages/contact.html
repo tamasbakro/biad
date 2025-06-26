@@ -93,8 +93,8 @@
 <body>
     <div class="hero contact-hero">
         <div class="hero-content">
-            <h1>Kapcsolat</h1>
-            <p>Lépjen velünk kapcsolatba, kérdéseit és üzeneteit szívesen fogadjuk!</p>
+            <h1 data-translate-key="hero_title_contact">Kapcsolat</h1>
+            <p data-translate-key="hero_subtitle_contact">Lépjen kapcsolatba velünk, vagy látogasson el hozzánk.</p>
         </div>
     </div>
     <header>
@@ -105,15 +105,19 @@
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="../index.html">Főoldal</a></li>
-                <li><a href="events.html">Események</a></li>
-                <li><a href="bible.html">Biblia</a></li>
-                <li><a href="live.html">Élő Közvetítés</a></li>
-                <li><a href="gallery.html">Galéria</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Kapcsolat</a></li>
-                <li><a href="donate.html" class="donate-btn">Adományozás</a></li>
+                <li><a href="../index.html" data-translate-key="nav_home">Főoldal</a></li>
+                <li><a href="events.html" data-translate-key="nav_events">Események</a></li>
+                <li><a href="bible.html" data-translate-key="nav_bible">Biblia</a></li>
+                <li><a href="live.html" data-translate-key="nav_live">Élő Közvetítés</a></li>
+                <li><a href="gallery.html" data-translate-key="nav_gallery">Galéria</a></li>
+                <li><a href="blog.html" data-translate-key="nav_blog">Blog</a></li>
+                <li><a href="contact.html" data-translate-key="nav_contact">Kapcsolat</a></li>
+                <li><a href="donate.html" class="donate-btn" data-translate-key="nav_donate">Adományozás</a></li>
             </ul>
+            <div class="lang-switcher">
+                <a href="#" class="lang-btn active" data-lang="hu">HU</a>
+                <a href="#" class="lang-btn" data-lang="ro">RO</a>
+            </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -126,24 +130,19 @@
         <section class="contact-section">
             <div class="contact-container">
                 <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Név</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Tárgy</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Üzenet</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Üzenet küldése</button>
+                    <form
+                      action="https://formspree.io/f/xwpbnbjp"
+                      method="POST"
+                    >
+                      <div class="form-group">
+                        <label for="email" data-translate-key="form_email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="message" data-translate-key="form_message">Üzenet:</label>
+                        <textarea id="message" name="message" required></textarea>
+                      </div>
+                      <button type="submit" class="submit-btn" data-translate-key="form_send">Küldés</button>
                     </form>
                 </div>
                 <div class="map-container">
@@ -167,13 +166,13 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Kapcsolat</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Cím: Str. Mihai Viteazu, Diosig, Bihor, Romania</p>
-                <p><i class="fas fa-phone"></i> Telefon: [Telefonszám]</p>
-                <p><i class="fas fa-envelope"></i> Email: [Email cím]</p>
+                <h3 data-translate-key="footer_contact">Kapcsolat</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <span data-translate-key="footer_address">Cím: Str. Mihai Viteazu, Diosig, Bihor, Romania</span></p>
+                <p><i class="fas fa-phone"></i> <span data-translate-key="footer_phone">Telefon: [Telefonszám]</span></p>
+                <p><i class="fas fa-envelope"></i> <span data-translate-key="footer_email">Email: [Email cím]</span></p>
             </div>
             <div class="footer-section">
-                <h3>Kövessen minket</h3>
+                <h3 data-translate-key="footer_follow">Kövessen minket</h3>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
@@ -182,24 +181,31 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Biserica Adventista Diosig. Minden jog fenntartva.</p>
+            <p>&copy; 2025 Biserica Adventista Diosig. <span data-translate-key="footer_rights">Minden jog fenntartva.</span></p>
         </div>
     </footer>
 
     <script src="../js/main.js"></script>
+    <script src="../js/language.js"></script>
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Add your form submission logic here
-            alert('Köszönjük üzenetét! Hamarosan felvesszük Önnel a kapcsolatot.');
-            this.reset();
-        });
-
         document.getElementById('getDirectionsBtn').addEventListener('click', function() {
             const address = '8246+XG Diosig';
             const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(address)}`;
             window.open(googleMapsUrl, '_blank');
         });
     </script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/685c3cfa31f91a1909011e08/1iuk4sdbr';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 </html> 

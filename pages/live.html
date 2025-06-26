@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Élő Közvetítés - Adventista Egyház</title>
+    <title>Élő Közvetítés - Biserica Adventista Diosig</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -122,8 +122,8 @@
 <body>
     <div class="hero live-hero">
         <div class="hero-content">
-            <h1>Élő Közvetítés</h1>
-            <p>Kövessen minket élőben minden vasárnap és különleges alkalmakon!</p>
+            <h1 data-translate-key="hero_title_live">Élő Közvetítés</h1>
+            <p data-translate-key="hero_subtitle_live">Nézze istentiszteleteinket és különleges eseményeinket élőben.</p>
         </div>
     </div>
     <header>
@@ -134,15 +134,19 @@
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="../index.html">Főoldal</a></li>
-                <li><a href="events.html">Események</a></li>
-                <li><a href="bible.html">Biblia</a></li>
-                <li><a href="live.html">Élő Közvetítés</a></li>
-                <li><a href="gallery.html">Galéria</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Kapcsolat</a></li>
-                <li><a href="donate.html" class="donate-btn">Adományozás</a></li>
+                <li><a href="../index.html" data-translate-key="nav_home">Főoldal</a></li>
+                <li><a href="events.html" data-translate-key="nav_events">Események</a></li>
+                <li><a href="bible.html" data-translate-key="nav_bible">Biblia</a></li>
+                <li><a href="live.html" data-translate-key="nav_live">Élő Közvetítés</a></li>
+                <li><a href="gallery.html" data-translate-key="nav_gallery">Galéria</a></li>
+                <li><a href="blog.html" data-translate-key="nav_blog">Blog</a></li>
+                <li><a href="contact.html" data-translate-key="nav_contact">Kapcsolat</a></li>
+                <li><a href="donate.html" class="donate-btn" data-translate-key="nav_donate">Adományozás</a></li>
             </ul>
+            <div class="lang-switcher">
+                <a href="#" class="lang-btn active" data-lang="hu">HU</a>
+                <a href="#" class="lang-btn" data-lang="ro">RO</a>
+            </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -165,31 +169,31 @@
                 </div>
 
                 <div class="stream-info">
-                    <h3 class="stream-title">Szombati Istentisztelet</h3>
-                    <p class="stream-description">
+                    <h3 class="stream-title" data-translate-key="live_stream_title">Szombati Istentisztelet</h3>
+                    <p class="stream-description" data-translate-key="live_stream_desc">
                         Köszöntjük az élő közvetítésen! Csatlakozzon hozzánk a szombati istentiszteletre.
                         A közvetítés 9:00-kor kezdődik.
                     </p>
                 </div>
 
                 <div class="stream-schedule">
-                    <h3>Következő Közvetítések</h3>
+                    <h3 data-translate-key="live_next_streams">Következő Közvetítések</h3>
                     <div class="schedule-item">
-                        <span class="schedule-event">Szombati Istentisztelet</span>
-                        <span class="schedule-time">Szombat 10:00</span>
+                        <span class="schedule-event" data-translate-key="live_stream_saturday">Szombati Istentisztelet</span>
+                        <span class="schedule-time" data-translate-key="live_stream_saturday_time">Szombat 10:00</span>
                     </div>
                     <div class="schedule-item">
-                        <span class="schedule-event">Imaóra</span>
-                        <span class="schedule-time">Szerda 18:00</span>
+                        <span class="schedule-event" data-translate-key="live_stream_prayer">Imaóra</span>
+                        <span class="schedule-time" data-translate-key="live_stream_prayer_time">Szerda 18:00</span>
                     </div>
                     <div class="schedule-item">
-                        <span class="schedule-event">Pénteki Istentisztelet</span>
-                        <span class="schedule-time">Péntek 18:00</span>
+                        <span class="schedule-event" data-translate-key="live_stream_friday">Pénteki Istentisztelet</span>
+                        <span class="schedule-time" data-translate-key="live_stream_friday_time">Péntek 18:00</span>
                     </div>
                 </div>
 
                 <div class="chat-container">
-                    <h3>Élő Chat</h3>
+                    <h3 data-translate-key="live_chat">Élő Chat</h3>
                     <div class="chat-messages">
                         <!-- Chat messages will be dynamically loaded -->
                     </div>
@@ -205,13 +209,13 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Kapcsolat</h3>
+                <h3 data-translate-key="footer_contact">Kapcsolat</h3>
                 <p><i class="fas fa-map-marker-alt"></i> Cím: Str. Mihai Viteazu, Diosig, Bihor, Romania</p>
                 <p><i class="fas fa-phone"></i> Telefon: [Telefonszám]</p>
                 <p><i class="fas fa-envelope"></i> Email: [Email cím]</p>
             </div>
             <div class="footer-section">
-                <h3>Kövessen minket</h3>
+                <h3 data-translate-key="footer_follow">Kövessen minket</h3>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
@@ -220,11 +224,12 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Biserica Adventista Diosig. Minden jog fenntartva.</p>
+            <p data-translate-key="footer_rights">&copy; 2025 Biserica Adventista Diosig. Minden jog fenntartva.</p>
         </div>
     </footer>
 
     <script src="../js/main.js"></script>
+    <script src="../js/language.js"></script>
     <script>
         // Add chat functionality
         const chatInput = document.querySelector('.chat-input input');

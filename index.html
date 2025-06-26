@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A BIserica Adventista Diosig">
-    <title>BIserica Adventista Diosig</title>
+    <title>Biserica Adventista Diosig</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1 data-translate-key="hero_title_index">Üdvözöljük a Diószegi Adventista Gyülekezet oldalán!</h1>
+            <p id="daily-quote-text" style="text-align:center; margin-bottom:0; max-width: 600px; margin-left:auto; margin-right:auto; word-break:break-word;">&bdquo;<span id="daily-quote-content">Mert úgy szerette Isten e világot, hogy az ő egyszülött Fiát adta, hogy valaki hiszen ő benne, el ne vesszen, hanem örök élete legyen.</span>&rdquo;</p>
+            <div id="daily-quote-ref" style="text-align:right; font-style:italic; margin-top:0.2em; padding-right:10px; max-width:600px; margin-left:auto; margin-right:auto;">János 3:16</div>
+        </div>
+    </div>
     <header>
         <nav class="main-nav">
             <div class="logo">
@@ -17,67 +24,59 @@
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Főoldal</a></li>
-                <li><a href="pages/events.html">Események</a></li>
-                <li><a href="pages/bible.html">Biblia</a></li>
-                <li><a href="pages/live.html">Élő Közvetítés</a></li>
-                <li><a href="pages/gallery.html">Galéria</a></li>
-                <li><a href="pages/blog.html">Blog</a></li>
-                <li><a href="pages/contact.html">Kapcsolat</a></li>
-                <li><a href="pages/donate.html" class="donate-btn">Adományozás</a></li>
+                <li><a href="index.html" data-translate-key="nav_home">Főoldal</a></li>
+                <li><a href="pages/events.html" data-translate-key="nav_events">Események</a></li>
+                <li><a href="pages/bible.html" data-translate-key="nav_bible">Biblia</a></li>
+                <li><a href="pages/live.html" data-translate-key="nav_live">Élő Közvetítés</a></li>
+                <li><a href="pages/gallery.html" data-translate-key="nav_gallery">Galéria</a></li>
+                <li><a href="pages/gyerekek.html" data-translate-key="nav_gyerekek">Gyerekeknek</a></li>
+                <li><a href="pages/blog.html" data-translate-key="nav_blog">Blog</a></li>
+                <li><a href="pages/contact.html" data-translate-key="nav_contact">Kapcsolat</a></li>
+                <li><a href="pages/donate.html" class="donate-btn" data-translate-key="nav_donate">Adományozás</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+            <div class="lang-switcher">
+                <a href="#" class="lang-btn active" data-lang="hu">HU</a>
+                <a href="#" class="lang-btn" data-lang="ro">RO</a>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section class="hero">
-            <h1>Üdvözöljük az Adventista Egyházban</h1>
-            <p style="text-align: center;">„Ímé eljövök hamar: tartsd meg a mi nálad van, hogy senki el ne vegye a te koronádat.”</p>
-            <p style="text-align: center;">Jelenések 3:11</p>  
-        </section>
+    <section class="live-stream">
+        <a href="pages/live.html" class="live-stream-btn">
+            <i class="fas fa-video"></i>
+            <span data-i18n="live_btn">Élő Közvetítés</span>
+        </a>
+    </section>
 
-        <section class="worship-times">
-            <h2>Istentiszteletek</h2>
-            <div class="worship-schedule">
-                <div class="schedule-item">
-                    <h3>Szombat</h3>
-                    <p>9:00 - 12:00</p>
-                    <p>17:00 - 18:00</p>
-                </div>
-                <div class="schedule-item">
-                    <h3>Szerda</h3>
-                    <p>18:00 - 19:00</p>
-                </div>
-                <div class="schedule-item">
-                    <h3>Péntek</h3>
-                    <p>18:00 - 19:00</p>
+        <!-- Gyülekezeti kézikönyv szekció -->
+        <section class="manual-section">
+            <h2>Gyülekezeti kézikönyv</h2>
+            <div class="manual-container">
+                <p>A teljes gyülekezeti kézikönyvet letöltheti vagy helyben is olvashatja:</p>
+                <a href="kezikonyv/Gyulekezetei-kezikonyv-2016-kiadott_angol-oldszmmal-HUC.pdf" class="cta-button" target="_blank" rel="noopener">Kézikönyv letöltése (PDF)</a>
+                <div style="margin-top: 2em; max-width: 100%; position:relative;">
+                    <button id="manual-fullscreen-btn" style="position:absolute; top:10px; right:10px; z-index:2; padding:6px 16px; border:none; border-radius:4px; background:#2d5c88; color:#fff; cursor:pointer; font-size:1em;">Teljes képernyő</button>
+                    <iframe id="manual-pdf-frame" src="kezikonyv/Gyulekezetei-kezikonyv-2016-kiadott_angol-oldszmmal-HUC.pdf" width="100%" height="600px" style="border:1px solid #ccc; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);"></iframe>
                 </div>
             </div>
-        </section> 
-
-        <section class="live-stream">
-            <a href="pages/live.html" class="live-stream-btn">
-                <i class="fas fa-video"></i>
-                Élő Közvetítés
-            </a>
         </section>
     </main>
 
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Kapcsolat</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Cím: Str. Mihai Viteazu, Diosig, Bihor, Romania</p>
-                <p><i class="fas fa-phone"></i> Telefon: [Telefonszám]</p>
-                <p><i class="fas fa-envelope"></i> Email: [Email cím]</p>
+                <h3 data-translate-key="footer_contact">Kapcsolat</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer_address">Cím: Str. Mihai Viteazu, Diosig, Bihor, Romania</span></p>
+                <p><i class="fas fa-phone"></i> <span data-i18n="footer_phone">Telefon: [Telefonszám]</span></p>
+                <p><i class="fas fa-envelope"></i> <span data-i18n="footer_email">Email: [Email cím]</span></p>
             </div>
             <div class="footer-section">
-                <h3>Kövessen minket</h3>
+                <h3 data-translate-key="footer_follow">Kövessen minket</h3>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
@@ -86,12 +85,30 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Biserica Adventista Diosig. Minden jog fenntartva.</p>
+            <p>&copy; 2025 Biserica Adventista Diosig. <span data-i18n="footer_rights">Minden jog fenntartva.</span></p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var btn = document.getElementById('manual-fullscreen-btn');
+        var iframe = document.getElementById('manual-pdf-frame');
+        if(btn && iframe) {
+            btn.addEventListener('click', function() {
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.mozRequestFullScreen) { /* Firefox */
+                    iframe.mozRequestFullScreen();
+                } else if (iframe.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) { /* IE/Edge */
+                    iframe.msRequestFullscreen();
+                }
+            });
+        }
+    });
     </script>
 </body>
 </html> 

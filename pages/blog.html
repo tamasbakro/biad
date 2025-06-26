@@ -137,8 +137,8 @@
 <body>
     <div class="hero blog-hero">
         <div class="hero-content">
-            <h1>Blog</h1>
-            <p>Olvassa el legfrissebb híreinket, lelki gondolatainkat és közösségi beszámolóinkat!</p>
+            <h1 data-translate-key="hero_title_blog">Blog</h1>
+            <p data-translate-key="hero_subtitle_blog">Olvassa el lelkészeink és tagjaink legújabb bejegyzéseit és gondolatait.</p>
         </div>
     </div>
     <header>
@@ -149,15 +149,19 @@
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="../index.html">Főoldal</a></li>
-                <li><a href="events.html">Események</a></li>
-                <li><a href="bible.html">Biblia</a></li>
-                <li><a href="live.html">Élő Közvetítés</a></li>
-                <li><a href="gallery.html">Galéria</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Kapcsolat</a></li>
-                <li><a href="donate.html" class="donate-btn">Adományozás</a></li>
+                <li><a href="../index.html" data-translate-key="nav_home">Főoldal</a></li>
+                <li><a href="events.html" data-translate-key="nav_events">Események</a></li>
+                <li><a href="bible.html" data-translate-key="nav_bible">Biblia</a></li>
+                <li><a href="live.html" data-translate-key="nav_live">Élő Közvetítés</a></li>
+                <li><a href="gallery.html" data-translate-key="nav_gallery">Galéria</a></li>
+                <li><a href="blog.html" data-translate-key="nav_blog">Blog</a></li>
+                <li><a href="contact.html" data-translate-key="nav_contact">Kapcsolat</a></li>
+                <li><a href="donate.html" class="donate-btn" data-translate-key="nav_donate">Adományozás</a></li>
             </ul>
+            <div class="lang-switcher">
+                <a href="#" class="lang-btn active" data-lang="hu">HU</a>
+                <a href="#" class="lang-btn" data-lang="ro">RO</a>
+            </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -170,10 +174,10 @@
         <section class="blog-section">
             <div class="blog-container">
                 <div class="blog-filters">
-                    <button class="filter-btn active" data-filter="all">Mind</button>
-                    <button class="filter-btn" data-filter="spiritual">Lelki</button>
-                    <button class="filter-btn" data-filter="community">Közösségi</button>
-                    <button class="filter-btn" data-filter="events">Események</button>
+                    <button class="filter-btn active" data-filter="all" data-i18n="blog_filter_all">Mind</button>
+                    <button class="filter-btn" data-filter="spiritual" data-i18n="blog_filter_spiritual">Lelki</button>
+                    <button class="filter-btn" data-filter="community" data-i18n="blog_filter_community">Közösségi</button>
+                    <button class="filter-btn" data-filter="events" data-i18n="blog_filter_events">Események</button>
                 </div>
 
                 <div class="blog-grid">
@@ -197,7 +201,7 @@
                                     <span class="blog-tag">Ima</span>
                                 </div>
                             </div>
-                            <a href="#" class="read-more">Tovább olvasom &rarr;</a>
+                            <a href="#" class="read-more" data-i18n="blog_read_more">Tovább olvasom →</a>
                         </div>
                     </article>
 
@@ -220,7 +224,7 @@
                                     <span class="blog-tag">Egyház</span>
                                 </div>
                             </div>
-                            <a href="#" class="read-more">Tovább olvasom &rarr;</a>
+                            <a href="#" class="read-more" data-i18n="blog_read_more">Tovább olvasom →</a>
                         </div>
                     </article>
 
@@ -243,7 +247,7 @@
                                     <span class="blog-tag">Ifjúság</span>
                                 </div>
                             </div>
-                            <a href="#" class="read-more">Tovább olvasom &rarr;</a>
+                            <a href="#" class="read-more" data-i18n="blog_read_more">Tovább olvasom →</a>
                         </div>
                     </article>
                 </div>
@@ -254,13 +258,13 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Kapcsolat</h3>
+                <h3 data-translate-key="footer_contact">Kapcsolat</h3>
                 <p><i class="fas fa-map-marker-alt"></i> Cím: Str. Mihai Viteazu, Diosig, Bihor, Romania</p>
                 <p><i class="fas fa-phone"></i> Telefon: [Telefonszám]</p>
                 <p><i class="fas fa-envelope"></i> Email: [Email cím]</p>
             </div>
             <div class="footer-section">
-                <h3>Kövessen minket</h3>
+                <h3 data-translate-key="footer_follow">Kövessen minket</h3>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
@@ -269,11 +273,12 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Biserica Adventista Diosig. Minden jog fenntartva.</p>
+            <p data-translate-key="footer_rights">&copy; 2025 Biserica Adventista Diosig. Minden jog fenntartva.</p>
         </div>
     </footer>
 
     <script src="../js/main.js"></script>
+    <script src="../js/language.js"></script>
     <script>
         // Blog filtering
         const filterButtons = document.querySelectorAll('.filter-btn');

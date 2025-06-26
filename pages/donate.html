@@ -1,20 +1,93 @@
-<!-- Add after <body> and before <header> -->
-<div class="hero donate-hero">
-    <div class="hero-content">
-        <h1>Adományozás</h1>
-        <p>Támogassa közösségünket egyszerűen és biztonságosan online!</p>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adományozás - Adventista Egyház</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="hero donate-hero">
+        <div class="hero-content">
+            <h1 data-translate-key="hero_title_donate">Adományozás</h1>
+            <p data-translate-key="hero_subtitle_donate">Támogassa egyházunkat és missziónkat adományával.</p>
+        </div>
     </div>
-</div>
-<header>
-// ... existing code ...
-<main>
-    <section class="donate-section">
-        <!-- Remove <h2>Adományozás</h2> (now in hero) -->
-        // ... existing code ...
-    </section>
-</main>
-<div class="footer-bottom">
-    <p>&copy; 2025 Biserica Adventista Diosig. Minden jog fenntartva.</p>
-    <p><i class="fas fa-map-marker-alt"></i> Cím: Str. Mihai Viteazu, Diosig, Bihor, Romania</p>
-</div>
-// ... existing code ... 
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../images/logo.png" alt="Adventista Egyház Logó">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html" data-translate-key="nav_home">Főoldal</a></li>
+                <li><a href="events.html" data-translate-key="nav_events">Események</a></li>
+                <li><a href="bible.html" data-translate-key="nav_bible">Biblia</a></li>
+                <li><a href="live.html" data-translate-key="nav_live">Élő Közvetítés</a></li>
+                <li><a href="gallery.html" data-translate-key="nav_gallery">Galéria</a></li>
+                <li><a href="blog.html" data-translate-key="nav_blog">Blog</a></li>
+                <li><a href="contact.html" data-translate-key="nav_contact">Kapcsolat</a></li>
+                <li><a href="donate.html" class="donate-btn" data-translate-key="nav_donate">Adományozás</a></li>
+            </ul>
+             <div class="lang-switcher">
+                <a href="#" class="lang-btn active" data-lang="hu">HU</a>
+                <a href="#" class="lang-btn" data-lang="ro">RO</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="donation-section">
+            <h2 data-translate-key="donate_section_title">Adományozzon online</h2>
+            <p class="donation-intro" data-translate-key="donate_section_intro">Hálásan fogadjuk adományát. Válassza ki az Önnek megfelelő adományozási módot.</p>
+            
+            <div class="donation-methods">
+                <div class="donation-method">
+                    <h3 data-translate-key="donate_method_card">Bankkártya</h3>
+                    <!-- Placeholder for a payment gateway form -->
+                </div>
+                <div class="donation-method">
+                    <h3 data-translate-key="donate_method_transfer">Banki átutalás</h3>
+                    <div class="bank-details">
+                        <h4 data-translate-key="bank_details_title">Banki adatok</h4>
+                        <p><strong data-translate-key="account_holder">Számlatulajdonos:</strong> Biserica Adventista de Ziua a Saptea</p>
+                        <p><strong data-translate-key="account_number">Számlaszám:</strong> ROXX XXXX XXXX XXXX XXXX XXXX</p>
+                        <p><strong data-translate-key="bank_name">Bank neve:</strong> Numele Bancii</p>
+                        <p><em data-translate-key="donation_purpose">Kérjük, a közlemény rovatba írja be: "Adomány".</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-translate-key="footer_contact">Kapcsolat</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Cím: Str. Mihai Viteazu, Diosig, Bihor, Romania</p>
+                <p><i class="fas fa-phone"></i> Telefon: [Telefonszám]</p>
+                <p><i class="fas fa-envelope"></i> Email: [Email cím]</p>
+            </div>
+            <div class="footer-section">
+                <h3 data-translate-key="footer_follow">Kövessen minket</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-translate-key="footer_rights">&copy; 2025 Biserica Adventista Diosig. Minden jog fenntartva.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/language.js"></script>
+</body>
+</html> 
